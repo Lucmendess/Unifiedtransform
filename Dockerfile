@@ -1,10 +1,10 @@
 FROM php:7.4-fpm
 
 # Copy composer.lock and composer.json
-COPY composer.lock composer.json /var/www/
+COPY composer.lock composer.json /home/ubuntu/
 
 # Set working directory
-WORKDIR /var/www
+WORKDIR /home/ubuntu
 
 # Install dependencies
 # RUN apt-get update && apt-get install -y \
@@ -50,7 +50,7 @@ RUN useradd -u 1000 -ms /bin/bash -g www www
 COPY . /var/www
 
 # Copy existing application directory permissions
-COPY --chown=www:www . /var/www
+COPY --chown=www:www . /home/ubuntu
 
 # Change current user to www
 USER www
